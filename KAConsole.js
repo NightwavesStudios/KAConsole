@@ -1,4 +1,4 @@
-var KAConsole = {
+var dev = {
     VERSION: function() {
         return "1.1.0"
     },
@@ -149,12 +149,12 @@ var KAConsole = {
             this.promptLog.push(nPrompts)
             this.promptLog = this.promptLog.flat()
             try {
-                var KAC = this
+                var DEV = this
                 var f = function () {
-                    if((p.includes("KAConsole.resetOutput()"))||(p.includes("KAConsole.reset()"))) {
+                    if((p.includes("dev.resetOutput()"))||(p.includes("dev.reset()"))) {
                         eval(p.trim())
                     } else {
-                        KAC.log(eval(p.trim()))
+                        DEV.log(eval(p.trim()))
                     }
                 }
                 f()
@@ -210,36 +210,36 @@ var KAConsole = {
         this.prompt.style.bottom="1px"
         this.prompt.style.left="1em"
         this.prompt.style.border="none"
-        var KAC = this
+        var DEV = this
         this.prompt.addEventListener("keydown", function(k) {
             if(k.code === "Enter") {
-                KAC.executePrompt()
-                KAC.prompt.value = ""
-                KAC.pIndex = 0
-                KAC.promptLog[0] = ""
+                DEV.executePrompt()
+                DEV.prompt.value = ""
+                DEV.pIndex = 0
+                DEV.promptLog[0] = ""
             } 
             
             else if(k.code === "ArrowUp") {
-                if(KAC.pIndex < KAC.promptLog.length-1) {
-                    KAC.pIndex++
-                    KAC.prompt.value=KAC.promptLog[KAC.pIndex]
+                if(DEV.pIndex < DEV.promptLog.length-1) {
+                    DEV.pIndex++
+                    DEV.prompt.value=DEV.promptLog[DEV.pIndex]
                 } else {
-                    KAC.prompt.value=KAC.promptLog[KAC.pIndex]
+                    DEV.prompt.value=DEV.promptLog[DEV.pIndex]
                 }
             } 
             
             else if(k.code === "ArrowDown") {
-                if(KAC.pIndex > 0) {
-                    KAC.pIndex--
-                    KAC.prompt.value=KAC.promptLog[KAC.pIndex]
+                if(DEV.pIndex > 0) {
+                    DEV.pIndex--
+                    DEV.prompt.value=DEV.promptLog[DEV.pIndex]
                 } else {
-                    KAC.prompt.value=KAC.promptLog[KAC.pIndex]
+                    DEV.prompt.value=DEV.promptLog[DEV.pIndex]
                 }
             }
         })
         this.prompt.addEventListener("input",function() {
-            KAC.promptLog[0] = KAC.prompt.value||""
-            KAC.pIndex = 0
+            DEV.promptLog[0] = DEV.prompt.value||""
+            DEV.pIndex = 0
         })
         
         this.proCon.appendChild(this.prompt)
@@ -276,7 +276,7 @@ var KAConsole = {
     bindShowHide: function(keyCode) {
         document.body.addEventListener("keydown",function(k) {
             if(k.keyCode===keyCode) {
-                KAConsole.hidden?KAConsole.show():KAConsole.hide()
+                dev.hidden?dev.show():dev.hide()
             }
         })
     },
