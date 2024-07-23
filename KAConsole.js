@@ -3,7 +3,7 @@ var dev = {
         return "1.1.0"
     },
     AUTHOR: function() {
-        return "Peter@petercarnahan"
+        return "Updated: NightwavesStudios Original: Peter@petercarnahan"
     },
     
     elt: null,
@@ -20,6 +20,7 @@ var dev = {
     
     hidden:true,
     
+    /** Resize Module Function **/
     resize: function(newHeight) {
         if(newHeight < this.pHeight) {
             this.resize(this.pHeight)
@@ -93,7 +94,7 @@ var dev = {
                     var v = vals[i]
                     out += this.handleType(v)
                 } catch(e) {
-                    out += "\"Could not access "+keys[i]+": "+e.message+"\""
+                    out += "\"Could Not Access "+keys[i]+": "+e.message+"\""
                 }
                 if(i !== keys.length-1) {
                     out += ","+(notHTMLFormat?"\n":"<br>")
